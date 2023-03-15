@@ -20,6 +20,7 @@ public:
     inline MatrixCursor operator[](unsigned int idx);
     const Matrix& operator=(const Matrix&);
 
+    void Transpose();
     Matrix operator+(const Matrix& a) const;
     Matrix operator-(const Matrix& a) const;
     Matrix operator*(const Matrix& a) const;

@@ -78,6 +78,34 @@ const Matrix& Matrix::operator=(const Matrix& a)
     return *this;
 }
 
+void Matrix::Transpose()
+{
+    float **new_arr = 0;
+    unsigned int new_row = col, new_col = row;
+    unsigned int i, j;
+    new_arr = new float*[new_row];
+    for (i = 0; i < new_row; i++)
+    {
+        new_arr[i] = new float[new_col];
+        for (j = 0; j < new_col; j++)
+            new_arr[i][j] = 0;
+    }
+
+    for (i = 0; i < new_row; i++) {
+        for (int j = 0; j < new_col; j++) {
+            new_arr[i][j] = arr[j][i];
+        }
+    }
+
+    for (i = 0; i < row; i++)
+        delete[] arr[i];
+    delete[] arr;
+
+    col = new_col;
+    row = new_row;
+    arr = new_arr;
+}
+
 Matrix Matrix::operator+(const Matrix& a) const
 {
     if (col != a.col && row != a.row)
