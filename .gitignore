@@ -4,3 +4,4 @@ points/
 points/*
 *.out
 *.out.*
+deps.mk
