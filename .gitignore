@@ -1,2 +1,6 @@
 *.o
 main
+points/
+points/*
+*.out
+*.out.*
