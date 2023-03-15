@@ -1,7 +1,7 @@
 CC=gcc
 CXX=g++
 
-DEFINES=""
+DEFINES=
 
 # CFLAGS=-ansi -pedantic -g -Wall
 # CXXFLAGS=-ansi -pedantic -g -Wall
