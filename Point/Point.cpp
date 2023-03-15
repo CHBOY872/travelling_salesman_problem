@@ -4,7 +4,7 @@
 
 #include "Point.hpp"
 
-Point& Point::operator=(const Point& a)
+const Point& Point::operator=(const Point& a)
 {
 #   ifdef DEBUG
     printf("ASIIGNMENT\n");

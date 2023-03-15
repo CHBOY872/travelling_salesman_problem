@@ -43,7 +43,7 @@ public:
     friend Point operator+(const Point& a, const Point& b);
     friend Point operator-(const Point& a, const Point& b);
 
-    Point& operator=(const Point& a);
+    const Point& operator=(const Point& a);
 };
 
 Point operator+(const Point& a, const Point& b);
