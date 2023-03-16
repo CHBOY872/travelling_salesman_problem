@@ -23,6 +23,9 @@ HEDMODULES=$(SRCMODULES:.hpp=.o)
 %.o: %.cpp %.hpp
 	$(CXX) $(DEFINES) $(CXXFLAGS) $< -c -o $@
 
+%.o: %.c %.h
+	$(CC) $(DEFINES) $(CFLAGS) $< -c -o $@
+
 main: main.cpp $(OBJMODULES)
 	$(CXX) $(DEFINES) $(CXXFLAGS) $^ -o $@
 
