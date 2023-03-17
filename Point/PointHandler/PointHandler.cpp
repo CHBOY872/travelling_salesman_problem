@@ -11,5 +11,5 @@ float PointHandler::Modulo(const Point *a, const Point *b)
 
 void PointHandler::PrintPoint(const Point *a)
 {
-    printf("{%2.5f, %2.5f}, ", a->GetX(), a->GetY());
+    printf("{%2.5f, %2.5f} ", a->GetX(), a->GetY());
 }
