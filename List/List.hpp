@@ -66,6 +66,7 @@ public:
     ListCursor(List<T> *_the_master, typename List<T>::item *_node)
         : the_master(_the_master), node(_node) {}
 
+    operator T*() const { return &(node->val); }
     operator T() const { return node->val; }
     const ListCursor& operator=(T val) 
     {

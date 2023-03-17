@@ -5,7 +5,8 @@
 
 class PointHandler {
 public:
-    static float Modulo(Point *a, Point *b);
+    static float Modulo(const Point *a, const Point *b);
+    static void PrintPoint(const Point *a);
 };
 
 #endif

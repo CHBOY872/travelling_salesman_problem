@@ -34,8 +34,8 @@ public:
 #       endif
     }
 
-    float GetX() { return x; }
-    float GetY() { return y; }
+    float GetX() const { return x; }
+    float GetY() const { return y; }
 
     void SetX(float _x) { x = _x; }
     void SetY(float _y) { y = _y; }
