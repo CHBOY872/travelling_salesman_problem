@@ -13,24 +13,24 @@ class ProblemSolver {
 
     const int generations;
 
-    Point *arr;
+    NamedPoint *arr;
     const int arr_len;
 
 public:
     static ProblemSolver* Init(int _population_len, int _generations, 
-        Point* arr, int arr_len); //CHECKED
+        NamedPoint* arr, int arr_len);
     void Solve(Genome *res);
-    ~ProblemSolver(); //CHECKED
+    ~ProblemSolver();
 
 private:
     ProblemSolver(Genome **_routes, int _population_len, int _generations, 
-        Point *_arr, int _arr_len)
+        NamedPoint *_arr, int _arr_len)
         : routes(_routes), population_len(_population_len), 
-          generations(_generations), arr(_arr), arr_len(_arr_len) {} //CHECKED
-    Genome TournamentSelection(); //CHECKED
-    void EvolvePopulation(); //CHECKED
+          generations(_generations), arr(_arr), arr_len(_arr_len) {}
+    Genome TournamentSelection();
+    void EvolvePopulation();
 
-    void Sort(); //CHECKED
+    void Sort();
 
     Genome& Min(Genome **arr, int len);
     Genome Min();

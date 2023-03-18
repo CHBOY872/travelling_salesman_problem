@@ -13,7 +13,7 @@ ProblemSolver::~ProblemSolver()
 }
 
 ProblemSolver *ProblemSolver::Init(int _population_len, int _generations, 
-        Point* arr, int arr_len)
+        NamedPoint* arr, int arr_len)
 {
     Genome **_routes = new Genome *[_population_len];
     int i;
