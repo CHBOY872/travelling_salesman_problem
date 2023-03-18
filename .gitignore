@@ -5,3 +5,5 @@ points/*
 *.out
 *.out.*
 deps.mk
+run_test.sh
+valgrind.log
