@@ -95,7 +95,6 @@ void ProblemSolver::EvolvePopulation()
         parent2 = TournamentSelection();
         child = parent1.Crossover(parent2);
 
-
         if (HasDuplicates(&child))
             child = *routes[i];
         else
