@@ -4,10 +4,6 @@
 #include "../Genome/Genome.hpp"
 
 class ProblemSolver {
-    enum {
-        candidates_len = 3
-    };
-
     Genome **routes;
     const int population_len;
 
@@ -16,17 +12,21 @@ class ProblemSolver {
     NamedPoint *arr;
     const int arr_len;
 
+    int candidates_len;
+
 public:
     static ProblemSolver* Init(int _population_len, int _generations, 
-        NamedPoint* arr, int arr_len);
+        NamedPoint* arr, int arr_len, int _candidates_len);
     void Solve(Genome *res);
     ~ProblemSolver();
 
 private:
     ProblemSolver(Genome **_routes, int _population_len, int _generations, 
-        NamedPoint *_arr, int _arr_len)
+        NamedPoint *_arr, int _arr_len, int _candidates_len)
         : routes(_routes), population_len(_population_len), 
-          generations(_generations), arr(_arr), arr_len(_arr_len) {}
+          generations(_generations), arr(_arr), arr_len(_arr_len),
+          candidates_len(_population_len > _candidates_len 
+          ? _candidates_len : _population_len - 1) {}
     Genome TournamentSelection();
     void EvolvePopulation();
 

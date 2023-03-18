@@ -16,7 +16,7 @@ ProblemSolver::~ProblemSolver()
 }
 
 ProblemSolver *ProblemSolver::Init(int _population_len, int _generations, 
-        NamedPoint* arr, int arr_len)
+        NamedPoint* arr, int arr_len, int _candidates_len)
 {
     Genome **_routes = new Genome *[_population_len];
     int i;
@@ -26,7 +26,7 @@ ProblemSolver *ProblemSolver::Init(int _population_len, int _generations,
         _routes[i]->Shuffle();
     }
     return new ProblemSolver(_routes, _population_len, 
-        _generations, arr, arr_len);
+        _generations, arr, arr_len, _candidates_len);
 }
 
 Genome &ProblemSolver::Min(Genome **arr, int len)
