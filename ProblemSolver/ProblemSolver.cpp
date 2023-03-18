@@ -8,7 +8,10 @@ ProblemSolver::~ProblemSolver()
 {
     int i;
     for (i = 0; i < population_len; i++)
-        delete routes[i];
+    {
+        if (routes[i])
+            delete routes[i];
+    }
     delete[] routes;
 }
 
@@ -87,8 +90,8 @@ void ProblemSolver::EvolvePopulation()
     for (i = 0; i < population_len; i++)
         new_routes[i] = new Genome(arr_len);
 
-    *new_routes[0] = *routes[0];
-    *new_routes[1] = *routes[1];
+    new_routes[0] = routes[0];
+    new_routes[1] = routes[1];
 
     for (i = 2; i < population_len; ++i)
     {
@@ -105,8 +108,14 @@ void ProblemSolver::EvolvePopulation()
         *new_routes[i] = child;
     }
 
+    routes[0] = 0;
+    routes[1] = 0;
+
     for (i = 0; i < population_len; i++)
-        delete routes[i];
+    {
+        if (routes[i])
+            delete routes[i];
+    }
     delete[] routes;
 
     routes = new_routes;
