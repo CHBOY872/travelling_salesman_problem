@@ -25,10 +25,11 @@ int main()
 
     Genome res(arr_len);
     int i;
-    ProblemSolver *pr = ProblemSolver::Init(50, 2, points, arr_len);    
+    ProblemSolver *pr = ProblemSolver::Init(250, 100, points, arr_len);    
     pr->Solve(&res);
     for (i = 0; i < res.GetArrayLen(); i++)
         PointHandler::PrintNamedPoint(&res[i]);
+    PointHandler::PrintNamedPoint(&res[0]);
     printf("%f\n", res.GetLen());
 
     delete pr;
