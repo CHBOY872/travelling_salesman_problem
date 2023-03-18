@@ -2,13 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "Point/Point/Point.hpp"
+#include "Point/NamedPoint/NamedPoint.hpp"
 #include "Point/PointHandler/PointHandler.hpp"
-#include "Matrix/Matrix/Matrix.hpp"
-#include "Matrix/MatrixHandler/MatrixHandler.hpp"
-#include "List/List.hpp"
 #include "ProblemSolver/ProblemSolver.hpp"
-#include "String/String.hpp"
 
 static NamedPoint points[] = { NamedPoint("A", 1, 1), NamedPoint("B", 5, 8), 
                                NamedPoint("C", 7, 12), NamedPoint("D", 2, 9),
