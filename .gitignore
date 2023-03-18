@@ -7,3 +7,4 @@ points/*
 deps.mk
 run_test.sh
 valgrind.log
+valgrind.log.old
