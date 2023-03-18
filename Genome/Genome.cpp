@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "Genome.hpp"
@@ -35,7 +36,7 @@ void Genome::Shuffle()
 {
     int i, new_idx;
     Point buff;
-    for (i = 0; i < arr_len; i++)
+    for (i = 1; i < arr_len; i++)
     {
         buff = *points[i];
         new_idx = i + rand() % (arr_len - i);
@@ -56,7 +57,7 @@ Genome* Genome::InitGenome(Point *points, int point_count)
 
 Genome Genome::Crossover(const Genome& a)
 {
-    int pivot = rand() % arr_len;
+    int pivot = 1 + rand() % (arr_len - 1);
     Genome res(arr_len);
     
     int i;
@@ -72,11 +73,11 @@ void Genome::Mutate()
 {
     if (rand() < mutation_rate * RAND_MAX)
     {
-        int index1 = rand() % arr_len;
-        int index2 = rand() % arr_len;
+        int index1 = 1 + rand() % (arr_len - 1);
+        int index2 = 1 + rand() % (arr_len - 1);
 
         Point buf = *points[index1];
-        points[index1] = points[index2];
+        *points[index1] = *points[index2];
         *points[index2] = buf;
     }
 }
