@@ -50,14 +50,12 @@ Genome ProblemSolver::TournamentSelection()
     for (i = 0; i < candidates_len; i++)
     {
         idx = rand() % population_len;
-        candidates[i] = new Genome(*routes[idx]);
+        candidates[i] = routes[idx];
         int j;
     }
 
     Genome best_candidate(Min(candidates, candidates_len));
 
-    for (i = 0; i < candidates_len; i++)
-        delete candidates[i];
     delete[] candidates;
 
     return best_candidate;
@@ -87,8 +85,6 @@ void ProblemSolver::EvolvePopulation()
     Genome parent1(arr_len), parent2(arr_len), child(arr_len);
     int i, j;
     Genome **new_routes = new Genome *[population_len];
-    for (i = 0; i < population_len; i++)
-        new_routes[i] = new Genome(arr_len);
 
     new_routes[0] = routes[0];
     new_routes[1] = routes[1];
@@ -105,7 +101,7 @@ void ProblemSolver::EvolvePopulation()
         else
             child.Mutate();
 
-        *new_routes[i] = child;
+        new_routes[i] = new Genome(child);
     }
 
     routes[0] = 0;
