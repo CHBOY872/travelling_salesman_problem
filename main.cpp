@@ -1,50 +1,36 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Point/Point/Point.hpp"
 #include "Point/PointHandler/PointHandler.hpp"
 #include "Matrix/Matrix/Matrix.hpp"
 #include "Matrix/MatrixHandler/MatrixHandler.hpp"
 #include "List/List.hpp"
+#include "ProblemSolver/ProblemSolver.hpp"
+#include "String/String.hpp"
+
+static NamedPoint points[] = { NamedPoint("A", 1, 1), NamedPoint("B", 5, 8), 
+                               NamedPoint("C", 7, 12), NamedPoint("D", 2, 9),
+                               NamedPoint("E", 7, 2), NamedPoint("F", 1, 12),
+                               NamedPoint("G", 4, 2) };
+
+enum {
+    arr_len = 7
+};
 
 int main() 
 {
-    unsigned int i, j;
+    srand(time(NULL));
 
-    Matrix a1(10,15);
-    for (i = 0; i < a1.GetRow(); i++)
-    {
-        for (j = 0; j < a1.GetCol(); j++)
-            a1[i][j] = i + j;
-    }
-    Matrix a2(15,5);
-    for (i = 0; i < a2.GetRow(); i++)
-    {
-        for (j = 0; j < a2.GetCol(); j++)
-            a2[i][j] = i * j;
-    }
-    Matrix a3(a1 * a2);
+    Genome res(arr_len);
+    int i;
+    ProblemSolver *pr = ProblemSolver::Init(50, 2, points, arr_len);    
+    pr->Solve(&res);
+    for (i = 0; i < res.GetArrayLen(); i++)
+        PointHandler::PrintNamedPoint(&res[i]);
+    printf("%f\n", res.GetLen());
 
-    MatrixHandler::MatrixPrint(&a3);
-    a3.Transpose();
-    printf("\n\n\n\n\n");
-    MatrixHandler::MatrixPrint(&a3);
-
-    List<int> a;
-    a.Push(36);
-    a.Push(644);
-    a.Push(664646);
-    a.Push(103);
-
-    List<int>::Iterator* it = a.Iterate();
-    while(it->More())
-        printf("%d\n", (int)it->Next());
-    delete it;
-
-    a.Pop();
-    it = a.Iterate();
-    while(it->More())
-        printf("%d\n", (int)it->Next());
-    delete it;
-
+    delete pr;
     return 0;
 }
