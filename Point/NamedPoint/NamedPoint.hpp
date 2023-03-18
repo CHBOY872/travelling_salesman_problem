@@ -10,6 +10,7 @@ class NamedPoint : public Point {
 public:
     NamedPoint(const char *_header, float _x, float _y)
         : Point(_x, _y), header(_header) {}
+    NamedPoint() : Point() {}
     NamedPoint(const NamedPoint& a) : Point(a), header(a.header) {}
     
     virtual ~NamedPoint() {}
@@ -25,7 +26,7 @@ public:
 
 private:
     NamedPoint(float _x, float _y) : Point(_x, _y) {}
-    NamedPoint(const Point& a) : Point(a), header() {}
+    NamedPoint(const Point& a) : Point(a) {}
 };
 
 NamedPoint operator+(const NamedPoint& a, const NamedPoint& b);

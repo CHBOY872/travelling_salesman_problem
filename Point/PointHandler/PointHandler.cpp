@@ -19,4 +19,5 @@ void PointHandler::PrintNamedPoint(const NamedPoint *a)
 {
     printf("%s: ", (const char*)a->GetHeader());
     PrintPoint(a);
+    printf("\n");
 }
