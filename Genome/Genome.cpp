@@ -35,13 +35,13 @@ float Genome::RouteLength(NamedPoint **arr, int len)
 void Genome::Shuffle()
 {
     int i, new_idx;
-    NamedPoint buff;
+    NamedPoint *buff;
     for (i = 1; i < arr_len; i++)
     {
-        buff = *points[i];
+        buff = points[i];
         new_idx = i + rand() % (arr_len - i);
-        *points[i] = *points[new_idx];
-        *points[new_idx] = buff;  
+        points[i] = points[new_idx];
+        points[new_idx] = buff;  
     }
 }
 
@@ -50,7 +50,7 @@ Genome* Genome::InitGenome(NamedPoint *points, int point_count)
     NamedPoint **pnts = new NamedPoint*[point_count];
     unsigned int i;
     for (i = 0; i < point_count; i++)
-            pnts[i] = new NamedPoint(points[i]);
+        pnts[i] = new NamedPoint(points[i]);
 
     return new Genome(pnts, point_count);
 }
