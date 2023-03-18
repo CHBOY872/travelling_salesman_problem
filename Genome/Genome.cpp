@@ -88,14 +88,23 @@ const Genome& Genome::operator=(const Genome& a)
         return *this;
 
     int i;
-    for (i = 0; i < arr_len; i++)
-        delete points[i];
-    delete[] points;
-    
-    arr_len = a.arr_len;
-    points = new NamedPoint*[arr_len];
-    for (i = 0; i < arr_len; i++)
-        points[i] = new NamedPoint(*a.points[i]);
+
+    if (arr_len != a.arr_len)
+    {
+        for (i = 0; i < arr_len; i++)
+            delete points[i];
+        delete[] points;
+
+        arr_len = a.arr_len;
+        points = new NamedPoint*[arr_len];
+        for (i = 0; i < arr_len; i++)
+            points[i] = new NamedPoint(*a.points[i]);
+    }
+    else
+    {
+        for (i = 0; i < arr_len; i++)
+            *points[i] = *a.points[i];
+    }
 
     return *this;
 }
