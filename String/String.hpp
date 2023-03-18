@@ -16,9 +16,7 @@ public:
     const char* GetStr() const { return str; }
 
     char& operator[](int idx) { return str[idx]; }
-
-private:
-    const String& operator=(const char*);
+    const String& operator=(const String& a);
 };
 
 #endif
