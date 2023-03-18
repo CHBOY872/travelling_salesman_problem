@@ -4,9 +4,10 @@
 class String {
     char *str;
     int len;
+    int size;
 
 public:
-    String() : str(0), len(0) {}
+    String() : str(0), len(0), size(0) {}
     String(const char *);
     String(const String&);
     ~String() { if (str) delete[] str; }
