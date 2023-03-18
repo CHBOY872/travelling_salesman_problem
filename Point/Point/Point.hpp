@@ -27,7 +27,7 @@ public:
         printf("COPY CONSTRUCTOR\n");
 #       endif
     }
-    ~Point()
+    virtual ~Point()
     {
 #       ifdef DEBUG
         printf("DESTRUCTOR\n");
@@ -43,7 +43,9 @@ public:
     friend Point operator+(const Point& a, const Point& b);
     friend Point operator-(const Point& a, const Point& b);
 
-    const Point& operator=(const Point& a);
+    virtual const Point& operator=(const Point& a);
+
+    bool operator==(const Point& a) { return (x == a.x) && (y == a.y); }
 };
 
 Point operator+(const Point& a, const Point& b);
