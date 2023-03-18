@@ -76,9 +76,9 @@ void Genome::Mutate()
         int index1 = 1 + rand() % (arr_len - 1);
         int index2 = 1 + rand() % (arr_len - 1);
 
-        NamedPoint buf = *points[index1];
-        *points[index1] = *points[index2];
-        *points[index2] = buf;
+        NamedPoint *buf = points[index1];
+        points[index1] = points[index2];
+        points[index2] = buf;
     }
 }
 
