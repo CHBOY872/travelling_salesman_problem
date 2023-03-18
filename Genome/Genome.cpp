@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "Genome.hpp"
-#include "../Point/Point/Point.hpp"
+#include "../Point/NamedPoint/NamedPoint.hpp"
 #include "../Point/PointHandler/PointHandler.hpp"
 
 enum {
@@ -16,12 +16,12 @@ Genome::Genome(const Genome& a)
 {
     int i;
 
-    points = new Point*[a.arr_len];
+    points = new NamedPoint*[a.arr_len];
     for (i = 0; i < a.arr_len; i++)
-        points[i] = new Point(*a.points[i]);
+        points[i] = new NamedPoint(*a.points[i]);
 }
 
-float Genome::RouteLength(Point **arr, int len)
+float Genome::RouteLength(NamedPoint **arr, int len)
 {
     int i;
     float res = 0;
@@ -35,7 +35,7 @@ float Genome::RouteLength(Point **arr, int len)
 void Genome::Shuffle()
 {
     int i, new_idx;
-    Point buff;
+    NamedPoint buff;
     for (i = 1; i < arr_len; i++)
     {
         buff = *points[i];
@@ -45,12 +45,12 @@ void Genome::Shuffle()
     }
 }
 
-Genome* Genome::InitGenome(Point *points, int point_count) 
+Genome* Genome::InitGenome(NamedPoint *points, int point_count) 
 {
-    Point **pnts = new Point*[point_count];
+    NamedPoint **pnts = new NamedPoint*[point_count];
     unsigned int i;
     for (i = 0; i < point_count; i++)
-            pnts[i] = new Point(points[i]);
+            pnts[i] = new NamedPoint(points[i]);
 
     return new Genome(pnts, point_count);
 }
@@ -76,7 +76,7 @@ void Genome::Mutate()
         int index1 = 1 + rand() % (arr_len - 1);
         int index2 = 1 + rand() % (arr_len - 1);
 
-        Point buf = *points[index1];
+        NamedPoint buf = *points[index1];
         *points[index1] = *points[index2];
         *points[index2] = buf;
     }
@@ -93,9 +93,9 @@ const Genome& Genome::operator=(const Genome& a)
     delete[] points;
     
     arr_len = a.arr_len;
-    points = new Point*[arr_len];
+    points = new NamedPoint*[arr_len];
     for (i = 0; i < arr_len; i++)
-        points[i] = new Point(*a.points[i]);
+        points[i] = new NamedPoint(*a.points[i]);
 
     return *this;
 }
