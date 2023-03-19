@@ -2,7 +2,7 @@
 
 #include "String.hpp"
 
-String::String(const char *a) : len(strlen(a)), size(len + 1)
+String::String(const char *a) : len(strlen(a)), size(len + 2)
 {
     str = new char[size];
     int i;
@@ -11,7 +11,7 @@ String::String(const char *a) : len(strlen(a)), size(len + 1)
     str[i] = 0;
 }
 
-String::String(const String& a) : len(a.len), size(len + 1)
+String::String(const String& a) : len(a.len), size(len + 2)
 {
     str = new char[size];
     int i;
@@ -31,7 +31,7 @@ const String& String::operator=(const String& a)
     {
         if (str)
             delete [] str;
-        size = len + 1;
+        size = len + 2;
         str = new char[size];
     }
 
