@@ -10,6 +10,7 @@ class Genome {
     int arr_len;
 
 public:
+    Genome() : points(0), arr_len(0) {}
     Genome(int len) : arr_len(len)
     {
         int i;
